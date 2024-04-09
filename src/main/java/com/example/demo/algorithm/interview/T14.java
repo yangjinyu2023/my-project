@@ -48,6 +48,9 @@ public class T14 {
         Solution solution = new Solution();
         solution.dfs(root, new Stack<>());
         System.out.println(Arrays.toString(solution.route.toArray()));
+        //LinkedList小知识
+        //linkedlist链表当作栈的时候利用push往栈顶添加值，利用peek以及poll获取栈顶以及删除栈顶元素
+        //linkedlist链表当做队列的时候利用add以及offer往队尾添加值，利用peek以及poll获取队头的值以及删除队头的值
     }
 
     static class Solution {
