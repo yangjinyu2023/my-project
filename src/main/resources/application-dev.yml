@@ -1,0 +1,24 @@
+dynamic:
+  dataSources:
+    - name: master
+      url: jdbc:mysql://127.0.0.1:3306/league?serverTimezone=GMT
+      username: root
+      password: 123456
+      driverClassName: com.mysql.cj.jdbc.Driver
+    - name: slave
+      url: jdbc:mysql://127.0.0.1:3306/fake?serverTimezone=GMT
+      username: root
+      password: 123456
+      driverClassName: com.mysql.cj.jdbc.Driver
+
+feign:
+  hystrix:
+    enabled: true
+
+zuul:
+  routes:
+    #该配置方式中，user-route只是给路由一个名称，可以任意起名。
+    user-route:
+      service-id: user-provider
+      # service-id对应的路径
+      path: /user/**
