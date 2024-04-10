@@ -1,7 +1,5 @@
 package com.example.demo.A_lc;
 
-import org.apache.commons.collections.list.AbstractLinkedList;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +36,7 @@ import java.util.List;
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution57II {
 
     public int[][] findContinuousSequence(int target) {
         // 写法是对的，可惜Time Limit Exceeded

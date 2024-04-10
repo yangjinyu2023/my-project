@@ -40,7 +40,7 @@ package com.example.demo.A_lc;//请从字符串中找出一个最长的不包含
 import java.util.*;
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution48 {
     public int lengthOfLongestSubstring(String s) {
         if ("".equals(s)) {
             return 0;

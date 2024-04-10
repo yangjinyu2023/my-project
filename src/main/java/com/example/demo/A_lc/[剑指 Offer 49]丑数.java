@@ -22,7 +22,7 @@ package com.example.demo.A_lc;//我们把只包含质因子 2、3 和 5 的数�
 import java.util.HashSet;
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution49 {
     public int nthUglyNumber(int n) {
         // solutions第二个
         int[] dp = new int[n];

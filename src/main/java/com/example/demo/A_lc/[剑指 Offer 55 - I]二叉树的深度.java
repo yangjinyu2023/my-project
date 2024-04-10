@@ -29,6 +29,7 @@ package com.example.demo.A_lc; /**
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
+import java.util.LinkedList;
 import java.util.Queue;
 
 /**
@@ -40,7 +41,7 @@ import java.util.Queue;
  * TreeNode(int x) { val = x; }
  * }
  */
-class Solution {
+class Solution55I {
     // 使用BFS或DFS统计数的深度，一定要记住！
     public int maxDepth(TreeNode root) {
         // DFS，树的最大深度，为左子树的最大深度和右子树的最大深度中的较大值加1

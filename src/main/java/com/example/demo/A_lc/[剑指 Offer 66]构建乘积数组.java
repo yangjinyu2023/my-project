@@ -25,7 +25,7 @@ package com.example.demo.A_lc;
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution66 {
     // 美团面试考过此题呢！
     public int[] constructArr(int[] a) {
         int length = a.length;

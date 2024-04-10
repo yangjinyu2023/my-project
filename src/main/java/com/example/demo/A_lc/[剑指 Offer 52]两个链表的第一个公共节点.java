@@ -73,7 +73,7 @@ package com.example.demo.A_lc;//输入两个链表，找出它们的第一个公
  *     }
  * }
  */
-public class Solution {
+class Solution52 {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         // 看solutions第3个，空间O(N)时间O(1)
         // 求相交问题，可用双指针，指针1先遍历A再遍历B，指针2先遍历B再遍历A，两指针相遇点即相交点

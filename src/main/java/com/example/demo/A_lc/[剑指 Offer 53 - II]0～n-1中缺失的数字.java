@@ -27,7 +27,7 @@ package com.example.demo.A_lc;
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution53II {
     public int missingNumber(int[] nums) {
         int l = 0, r = nums.length - 1;
         while (l <= r) {

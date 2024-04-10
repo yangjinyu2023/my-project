@@ -34,7 +34,7 @@ package com.example.demo.A_lc;
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution62 {
     // 约瑟夫环问题，用动态规划解决
     // 只看懂“胎教毕业”的solution了。。看来我也就胎教毕业
     // 拿n=5,m=3举例，

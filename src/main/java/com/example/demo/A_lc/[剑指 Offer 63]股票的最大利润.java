@@ -34,7 +34,7 @@ package com.example.demo.A_lc;
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution63 {
     public int maxProfit(int[] prices) {
         if (prices.length == 0) {
             return 0;

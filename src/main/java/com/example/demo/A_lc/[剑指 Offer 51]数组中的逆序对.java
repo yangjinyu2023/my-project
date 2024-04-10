@@ -16,7 +16,7 @@ package com.example.demo.A_lc;//在数组中的两个数字，如果前面一个
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution51 {
     public int count = 0;
 
     public int reversePairs(int[] nums) {

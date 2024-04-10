@@ -26,7 +26,7 @@ package com.example.demo.A_lc;//在一个 m*n 的棋盘的每一格都放有一�
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution47 {
     public int maxValue(int[][] grid) {
         // 矩阵左上角到右下角路径和最大值问题
         // 动态规划

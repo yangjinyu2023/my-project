@@ -46,7 +46,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution58I {
     public String reverseWords(String s) {
         if (s == null) {
             return s;

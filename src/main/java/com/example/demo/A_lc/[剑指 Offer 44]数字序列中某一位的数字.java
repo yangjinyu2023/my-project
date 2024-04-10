@@ -29,7 +29,7 @@ package com.example.demo.A_lc;//数字以0123456789101112131415…的格式序�
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution44 {
     public int findNthDigit(int n) {
         /* 总体思路： n-->(找到位与数字分布关系)-->确定是几位数-->-->确定具体是哪个数-->确定是这个数的第几位 */
         // 将相同位数的数字划分为一组，用三个变量标识特诊：数字至少是一位数，初始化

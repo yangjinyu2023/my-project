@@ -51,7 +51,7 @@ import java.util.LinkedList;
  * TreeNode(int x) { val = x; }
  * }
  */
-class Solution18_1 {
+class Solution68_1 {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         // 求公共祖先问题，记住！
         // 从root向下开始找，如果p、q分别在某个节点的左右子树，那么该节点就是p、q的公共祖先

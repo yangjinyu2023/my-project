@@ -35,7 +35,7 @@ import java.lang.Integer;
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution59I {
     public int[] maxSlidingWindow(int[] nums, int k) {
         // 单调队列，进队O(1)，出队均摊时间O(1)，取最大值0(1)，空间O(2n)
         // 关于单调队列，看剑指offer59-II

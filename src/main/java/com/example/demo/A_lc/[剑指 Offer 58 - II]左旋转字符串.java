@@ -30,7 +30,7 @@ package com.example.demo.A_lc;
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution58II {
     public String reverseLeftWords(String s, int n) {
         return s.substring(n, s.length()).concat(s.substring(0, n));
     }

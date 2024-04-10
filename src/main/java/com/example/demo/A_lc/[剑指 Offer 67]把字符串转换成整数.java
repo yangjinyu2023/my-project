@@ -65,7 +65,7 @@ package com.example.demo.A_lc;
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution67 {
     public int strToInt(String str) {
         char[] cs = str.toCharArray();
         int i = 0, n = cs.length;

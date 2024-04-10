@@ -31,7 +31,7 @@ package com.example.demo.A_lc;
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution60 {
     public double[] dicesProbability(int n) {
         // 动态规划，solutions第一个
         // n=1时可能出现的点数和：1,2,3,4,5,6

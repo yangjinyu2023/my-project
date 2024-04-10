@@ -20,7 +20,7 @@ package com.example.demo.A_lc;//给定一个数字，我们按照如下规则把
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution46 {
     public int translateNum(int num) {
         // dp[i]表示前i个数字的翻译方式数量
         // 状态转移方程

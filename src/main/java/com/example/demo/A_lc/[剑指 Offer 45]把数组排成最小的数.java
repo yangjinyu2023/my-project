@@ -34,7 +34,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution45 {
     public String minNumber(int[] nums) {
         // 贪心算法（局部最优解）
         // 自顶向下，每一步上都要保证能获得局部最优解

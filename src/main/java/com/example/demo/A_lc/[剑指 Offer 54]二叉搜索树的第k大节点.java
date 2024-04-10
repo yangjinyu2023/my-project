@@ -51,7 +51,7 @@ import java.util.Stack;
  * TreeNode(int x) { val = x; }
  * }
  */
-class Solution {
+class Solution54 {
     int res = 0, k = 0, i = 0;
 
     public int kthLargest(TreeNode root, int k) {

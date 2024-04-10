@@ -23,7 +23,7 @@ package com.example.demo.A_lc;
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution65 {
     // 位运算很奇妙
     // 进位c=(a&b)<<1，非进位n=a^b，容易得出a+b=n+c（随便举个例子就可以得出）
     // 不断的重复这个转换，直到c变成0（因为每次循环都左移1位），这样结果就是n了

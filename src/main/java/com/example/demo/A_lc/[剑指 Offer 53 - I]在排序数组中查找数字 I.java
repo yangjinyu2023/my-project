@@ -34,7 +34,7 @@ package com.example.demo.A_lc;//统计一个数字在排序数组中出现的次
 
 //leetcode submit region begin(Prohibit modification and deletion)
 // 看solutions第二个
-class Solution {
+class Solution53I {
     // 二分法，找到左右边界
     // 如何找左右边界？？（当时没想明白，本题记住）
     // 二分法找到第一个出现的数字，找到最后一个出现的数字

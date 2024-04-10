@@ -30,7 +30,7 @@ package com.example.demo.A_lc;
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution56I {
     // solutions第二个，位运算
     public int[] singleNumbers(int[] nums) {
         // 如果a=b，那么a^b=0

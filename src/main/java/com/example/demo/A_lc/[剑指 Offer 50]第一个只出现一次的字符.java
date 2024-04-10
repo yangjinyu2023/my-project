@@ -23,9 +23,10 @@ package com.example.demo.A_lc;//在字符串 s 中找出第一个只出现一次
 
 
 import java.util.HashMap;
+import java.util.Map;
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution50 {
     public char firstUniqChar(String s) {
         Map<Character, Integer> map = new HashMap<>();
         for (int i = 0; i < s.length(); i++) {

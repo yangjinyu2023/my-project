@@ -29,7 +29,7 @@ package com.example.demo.A_lc;
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution64 {
     // 本题要点：用&&短路、||短路，可以替代if
     public int sumNums(int n) {
         // 脑筋急转弯都上来了。。限制很多，看答案，用递归

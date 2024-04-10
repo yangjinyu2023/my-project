@@ -56,7 +56,7 @@ package com.example.demo.A_lc; /**
  * TreeNode(int x) { val = x; }
  * }
  */
-class Solution {
+class Solution55II {
     public boolean isBalanced(TreeNode root) {
         // 任意左右子树深度相差不超过1，这种容易想，可以记忆它
         // 此解法基于上题求树深度，进而判断是否为平衡二叉树，但是产生了重复判断

@@ -34,7 +34,7 @@ import java.util.Arrays;
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution61 {
     public boolean isStraight(int[] nums) {
         /*
         // 插入排序，从大到小排列

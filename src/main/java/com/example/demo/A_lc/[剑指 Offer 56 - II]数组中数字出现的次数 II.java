@@ -31,7 +31,7 @@ package com.example.demo.A_lc;
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution56II {
     // solutions第1个方法二
     // 很经典的二进制位运算，记住了！
     // 循环32次，循环中：右移，最低位和1做&与运算，可以得到二进制的每一位

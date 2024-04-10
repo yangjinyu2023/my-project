@@ -30,7 +30,7 @@ package com.example.demo.A_lc;
  */
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution57I {
     public int[] twoSum(int[] nums, int target) {
         // 数组递增，使用双指针法
         int i = 0, j = nums.length - 1;

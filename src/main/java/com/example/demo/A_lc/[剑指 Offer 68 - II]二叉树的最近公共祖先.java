@@ -50,7 +50,7 @@ package com.example.demo.A_lc; /**
  * TreeNode(int x) { val = x; }
  * }
  */
-class Solution {
+class Solution68_2 {
     // 与上题同理，从根节点向下搜索（先序遍历），
     // 如果p、q分别居于某结点的左右节点，那么该节点为最p、q的最近公共祖先
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
