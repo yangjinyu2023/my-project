@@ -1,10 +1,6 @@
 package com.example.demo.algorithm.interview;
 
-import javafx.util.Pair;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -73,6 +69,7 @@ public class T15 {
         public static void main(String[] args) {
             System.out.println(new S2().compressString("abbccc"));
         }
+
         public String compressString(String input) {
             StringBuilder compressed = new StringBuilder();
             int count = 1;
@@ -116,5 +113,90 @@ public class T15 {
         //    GROUP BY
         //        class,
         //        name) t
+    }
+
+    // 实现一个链表的反转
+    static class S4 {
+        public static void main(String[] args) {
+            Node node = new Node(1);
+            node.next = new Node(2);
+            node.next.next = new Node(3);
+            node.next.next.next = new Node(4);
+
+            S4 s4 = new S4();
+            s4.print(node);
+            node = s4.reverseLinkedList(node);
+            s4.print(node);
+        }
+
+        public Node reverseLinkedList(Node head) {
+            Node prev = null, current = head;
+            while (current != null) {
+                Node next = current.next;
+                current.next = prev;
+                prev = current;
+                current = next;
+            }
+            return prev;
+        }
+
+        public void print(Node node) {
+            while (node != null) {
+                System.out.println(node.val);
+                node = node.next;
+            }
+        }
+    }
+
+    // 判断单链表成环并找出环的起点
+    static class S5 {
+        public static void main(String[] args) {
+            // 构造环形链表，环的起始点是3，不用看这里代码
+            Node node = new Node(1);
+            Node head = node;
+            Node node3 = null;
+            for (int i = 2; i < 7; i++) {
+                node.next = new Node(i);
+                if (node.val == 3) {
+                    node3 = node;
+                }
+                node = node.next;
+            }
+            node.next = node3;
+            // 打印环的起始点
+            System.out.println(new S5().detectCycle(head).val);
+        }
+
+        // 快慢指针 https://blog.csdn.net/tianmlin1/article/details/135961711
+        public Node detectCycle(Node head) {
+            if(head == null){
+                return null;
+            }
+            Node slow = head, fast = head;
+            while (fast != null && fast.next != null){
+                slow = slow.next;
+                fast = fast.next.next;
+                if(slow == fast){
+                    slow = head;
+                    while (slow != fast){
+                        slow = slow.next;
+                        fast = fast.next;
+                    }
+                    return slow;
+                }
+            }
+            // 快指针是null或者快指针的next是null（奇偶），说明走到尾结点 => 无环形，返回null
+            return null;
+        }
+
+    }
+
+    static class Node {
+        Node next;
+        int val;
+
+        public Node(int val) {
+            this.val = val;
+        }
     }
 }
