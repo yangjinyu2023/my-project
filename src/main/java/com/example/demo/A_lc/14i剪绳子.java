@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//给你一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n>1并且m>1），每段绳子的长度记为 k[0],k[1]...k[m-1] 。
+package com.example.demo.A_lc;
+//给你一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n>1并且m>1），每段绳子的长度记为 k[0],k[1]...k[m-1] 。
 //请问 k[0]*k[1]*...*k[m-1] 可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18
 //。 
 //
@@ -12,7 +13,7 @@ package com.example.demo.A_lc;//给你一根长度为 n 的绳子，请把绳子
 //
 // 输入: 10
 //输出: 36
-//解释: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36 
+//解释: 10 = 3 + 3 + 4, 3 * 3 * 4 = 36
 //
 // 提示： 
 //
@@ -37,7 +38,7 @@ class Solution14i {
         int[] dp = new int[n + 1];
         // 初始值（边界条件）
         // 题中条件，m>1，n>1，所以从2开始。
-        dp[2] =1;
+        dp[2] = 1;
         // 状态转移方程
         // 当 i ≥ 2 时，假设对长度为 i 绳子剪出的第一段绳子长度是 j（1≤j<i），则有以下两种方案：
         // （1）将 i 剪成 j 和 i-j 长度的绳子，且 i−j 不再继续剪，此时的乘积是 j×(i−j) ；
@@ -54,6 +55,28 @@ class Solution14i {
         // 返回值
         // 最终得到dp[n]的值即为将长度为n的绳子拆分成至少两段绳子之后，这些绳子长度的最大乘积。
         return dp[n];
+    }
+
+
+    public int cuttingRope111(int n) {
+        // dp[i]代表长度为i的绳子最大乘积
+        // 什么是能确定的呢？第一段绳子切多长是能确定的，设为j
+        // 那么第一段绳子切的长度为j时，最大乘积为Math.max(j*(i-j), j*dp[i-j])
+        // 那么dp[i]应该为j在(1<=j<i)内的最大值
+        // dp[i] = Math.max(dp[i], Math.max(j * (i - j), j * dp[i - j]))
+        int[] dp = new int[n + 1];
+        dp[2] = 1;
+        for (int i = 3; i <= n; i++) {
+            for (int j = 1; j < i; j++) {
+                dp[i] = Math.max(dp[i], Math.max(j * (i - j), j * dp[i - j]));
+            }
+        }
+        return dp[n];
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Solution14i().cuttingRope(8));
+        System.out.println(new Solution14i().cuttingRope111(8));
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

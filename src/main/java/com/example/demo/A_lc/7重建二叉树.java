@@ -81,5 +81,32 @@ class Solution7 {
         root.right = build(preorder, preS + leftSize + 1, preE, inorder, index + 1, inE);
         return root;
     }
+
+
+    public TreeNode buildTree111(int[] preorder, int[] inorder){
+        // 思路是，递归，每次传入子树的先序和中序
+       return build111(preorder, 0, preorder.length - 1, inorder, 0, inorder.length -1);
+    }
+    private TreeNode build111(int[] preorder, int ps, int pe, int[] inorder, int is, int ie) {
+        // 结束递归
+        if(ps > pe || is > ie){
+            return null;
+        }
+        int rootVal = preorder[ps];
+        TreeNode root = new TreeNode(rootVal);
+        // 确定在中序中的位置
+        int i = is;
+        for (; i <= ie; i++) {
+            if(inorder[i] == rootVal){
+                break;
+            }
+        }
+        int leftLength = i - is;
+
+        root.left = build111(preorder, ps + 1, ps + leftLength, inorder, is, i-1);
+        root.right = build111(preorder, ps + leftLength + 1, pe, inorder, i+1, ie);
+        return root;
+    }
+
 }
 //leetcode submit region end(Prohibit modification and deletion)

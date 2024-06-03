@@ -37,7 +37,7 @@ class Solution10ii {
         // 加上有f(n)种跳法，先考虑边界，最后一跳，要么跳2层，要么跳1层
         // 如果跳2层，还有f(n-2)种跳法；如果跳1层，还有f(n-1)种跳法
         // f(n)=f(n-1)+f(n-2)，f(0)=1，f(1)=1，f(2)=2
-        // 转换位斐波那契问题，初始值不同
+        // 转换为斐波那契问题，初始值不同
         if (n < 2) {
             return 1;
         }
@@ -50,5 +50,31 @@ class Solution10ii {
         }
         return r;
     }
+
+    public int numWays111(int n) {
+        // f(n)=f(n-1)+f(n-2),f(0)=1,f(1)=1,f(2)=2
+        //int[] dp = new int[n + 1];
+        //dp[0] = 1;
+        //dp[1] = 1;
+        //for (int i = 2; i <= n; i++) {
+        //    dp[i] = dp[i-1] + dp[i-2];
+        //}
+        //return dp[n];
+        if(n<=2){
+            return 1;
+        }
+        int a,b=1,c=1;
+        for (int i = 2; i <= n; i++) {
+            a = b;
+            b = c;
+            c = a+b;
+        }
+        return c;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Solution10ii().numWays111(3));
+    }
+
 }
 //leetcode submit region end(Prohibit modification and deletion)

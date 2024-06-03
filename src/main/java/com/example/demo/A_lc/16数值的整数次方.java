@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//实现 pow(x, n) ，即计算 x 的 n 次幂函数（即，xⁿ）。不得使用库函数，同时不需要考虑大数问题。
+package com.example.demo.A_lc;
+//实现 pow(x, n) ，即计算 x 的 n 次幂函数（即，xⁿ）。不得使用库函数，同时不需要考虑大数问题。
 //
 // 
 //
@@ -44,6 +45,8 @@ class Solution16 {
         /*
         // 快速幂，我会
         double res = 1.0;
+        // if ((n & 1) > 0) 检查 n 的当前最低位是否为1。如果是，说明当前的幂次贡献（x 的当前幂次）应乘到结果 res 上。
+        // 其实很好理解，就是指数运算，比如3^5 = (3^1)*(3^4)，就是把指数转变成二进制的1
         while (n > 0) {
             if ((n & 1) > 0) {
                 res = res * x;
@@ -61,7 +64,7 @@ class Solution16 {
     }
 
     // 一定要注意细节，这里n需要类型long
-    // 因为-2^31 <= n <= 2^31 - 1，那么-n就超出了int范围
+    // 因为-2^31 <= n <= 2^31 - 1，那么-n就超出了int范围！细节啊！
     public double quickPow(double x, long n) {
         double res = 1.0;
         while (n > 0) {
@@ -70,6 +73,19 @@ class Solution16 {
             }
             x *= x;
             n >>= 1;
+        }
+        return res;
+    }
+
+    public double quickPow111(double x, int n) {
+        // n必须是正整数
+        double res = 1d;
+        while(n > 0){
+            if((n&1)>0) {
+                res *= x;
+            }
+            x*=x;
+            n = n >> 1;
         }
         return res;
     }
