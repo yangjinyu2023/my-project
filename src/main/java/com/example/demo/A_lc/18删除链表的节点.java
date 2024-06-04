@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。
+package com.example.demo.A_lc;
+//给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。
 //
 // 返回删除后的链表的头节点。 
 //
@@ -55,6 +56,49 @@ class Solution18 {
             }
         }
         return head;
+    }
+
+
+    public ListNode deleteNode111(ListNode head, int val) {
+        // 考虑要找的节点是head的情况，直接返回head.next
+        if (head.val == val) {
+            return head.next;
+        }
+        // 非head节点的情况，需要prev、current
+        // next作为临时变量即可，和反转链表类似
+        ListNode prev = head, current = head;
+        while (current != null) {
+            ListNode next = current.next;
+            if (current.val == val) {
+                prev.next = next;
+                return head;
+            }
+            prev = current;
+            current = current.next;
+        }
+        return head;
+    }
+
+    public ListNode reverseListNode(ListNode head) {
+        ListNode prev = null, current = head;
+        while (current != null) {
+            ListNode next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        return prev;
+    }
+
+    public static void main(String[] args) {
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        ListNode newHead = new Solution18().deleteNode111(head, 4);
+        System.out.println();
+        newHead = new Solution18().reverseListNode(newHead);
+        System.out.println();
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

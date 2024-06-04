@@ -90,4 +90,28 @@ public class MergeSort {
         }
     }
 
+    // 所以归并的比较，都带=
+    public static void mergeSort111(int[] arr, int s, int m, int e, int[] tmp){
+        if(s>=e){
+            return;
+        }
+        int i = s, j = m+1, t = 0;
+        while(i<=m && j <=e){
+            if (arr[i]<=arr[j]){
+                tmp[t++] = arr[i++];
+            }else{
+                tmp[t++] = arr[j++];
+            }
+        }
+        while(i<=m){
+            tmp[t++] = arr[i++];
+        }
+        while(j<=e){
+            tmp[t++] = arr[j++];
+        }
+        t=0;
+        while(s <= e){
+            arr[s++] = tmp[t++];
+        }
+    }
 }

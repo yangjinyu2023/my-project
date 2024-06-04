@@ -8,6 +8,15 @@ package com.example.demo.datastructure.sort;
  */
 public class QuickSort {
 
+    // 最容易记忆的快排，不会忘记！
+    private void sort(int[] array, int start, int end) {
+
+    }
+
+
+
+
+
     private static void sort_recursion(int[] array, int left, int right) {
         if (left < right) {
             int position = positionPivot(array, left, right);
@@ -46,24 +55,24 @@ public class QuickSort {
     public static void main(String[] args) {
         int[] array = {9, 2, 11, 9, -3, 17, 3, 7, 9, 21, 0};
         //sort_recursion(array, 0 ,array.length -1);
-        QuickSort1.quickSort(array, 0, array.length - 1);// 记忆QuickSort1这个版本
-        //QuickSort2.sort(array, 0, array.length - 1);
+        //QuickSort1.quickSort(array, 0, array.length - 1);
+        QuickSort2.sort(array, 0, array.length - 1);
         for (int value : array) {
             System.out.print(value + " ");
         }
     }
 
-    // 默写2
+    // 默写2，记忆这个
     static class QuickSort2 {
         // int[] array = {9, 2, 11, 9, -3, 17, 3, 7, 9, 21, 0};
-        private static void sort(int[] array, int start, int end) {
+        public static void sort(int[] array, int start, int end) {
             if (start < end) {// 递归结束条件
                 int pivot = array[start];
                 int i = start, j = end + 1;//使用--j
                 while (true) {
                     while (i < end && array[++i] < pivot) {
                     }
-                    while (j > 0 && array[--j] > pivot) {
+                    while (j > start && array[--j] > pivot) {
                     }
                     if (i >= j) {// 这里有=号，相遇时也要退出
                         break;
@@ -83,7 +92,7 @@ public class QuickSort {
         }
     }
 
-    // 默写1，记忆这个版本
+    // 默写1
     static class QuickSort1 {
         public static void quickSort(int[] arr, int l, int r) {
             if (l >= r) {

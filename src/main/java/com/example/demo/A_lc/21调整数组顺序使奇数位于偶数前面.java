@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有奇数在数组的前半部分，所有偶数在数组的后半部分。
+package com.example.demo.A_lc;
+//输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有奇数在数组的前半部分，所有偶数在数组的后半部分。
 //
 // 
 //
@@ -45,29 +46,25 @@ class Solution21 {
         return (num & 1) > 0;
     }
 
-    // 快排
-    public void sort(int[] nums, int start, int end) {
-        if (start >= end) {
-            return;
-        }
-        int povit = nums[start];
-        int i = start, j = end + 1;
+    public int[] exchange111(int[] nums) {
+        // 双指针
+        // i向后，遇到奇数继续，遇到偶数和j换位置，
+        // j向前，遇到偶数继续，遇到偶数和i换位置
+        // i和j相遇退出
+        int i = 0, j = nums.length;
         while (true) {
-            while (++i < end && nums[i] < povit) {
+            while (i < nums.length - 1 && isOdd(nums[++i])) {
             }
-            while (--j > 0 && nums[j] > povit) {
+            while (j > 0 && !isOdd(nums[--j])) {
             }
             if (i >= j) {
                 break;
             }
-            int temp = nums[i];
+            int tmp = nums[i];
             nums[i] = nums[j];
-            nums[j] = temp;
+            nums[j] = tmp;
         }
-        nums[start] = nums[j];
-        nums[j] = povit;
-        sort(nums, start, j - 1);
-        sort(nums, j + 1, end);
+        return nums;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

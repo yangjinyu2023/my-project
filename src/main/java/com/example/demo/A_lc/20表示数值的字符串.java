@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//请实现一个函数用来判断字符串是否表示数值（包括整数和小数）。
+package com.example.demo.A_lc;
+//请实现一个函数用来判断字符串是否表示数值（包括整数和小数）。
 //
 // 数值（按顺序）可以分成以下几个部分： 
 //
@@ -105,6 +106,10 @@ class Solution20 {
                 state = transfer.get(state).get(type);
             }
         }
+        // 至少一位数字，后面跟着一个点 '.'
+        // 至少一位数字，后面跟着一个点 '.' ，后面再跟着至少一位数字
+        // 一个点 '.' ，后面跟着至少一位数字
+        String a = "\\s*([+-])?((\\d+(\\.?)|(\\d+\\.\\d+)|(\\.\\d+))([eE][+-]?\\d+)?\\s*";
         // 确定结束状态
         return state == State.STATE_INTEGER || state == State.STATE_POINT || state == State.STATE_FRACTION || state == State.STATE_EXP_NUMBER || state == State.STATE_END;
     }
@@ -193,24 +198,15 @@ class Solution20 {
 
     enum State {
         // 起始的空格
-        STATE_INITIAL,
-        // 符号位
-        STATE_INT_SIGN,
-        // 整数部分
-        STATE_INTEGER,
-        // 左侧有整数的小数点
-        STATE_POINT,
-        // 左侧无整数的小数点（根据前面的第二条额外规则，需要对左侧有无整数的两种小数点做区分）
-        STATE_POINT_WITHOUT_INT,
-        // 小数部分
-        STATE_FRACTION,
-        // 字符 e
-        STATE_EXP,
-        // 指数部分的符号位
-        STATE_EXP_SIGN,
-        // 指数部分的整数部分
-        STATE_EXP_NUMBER,
-        // 末尾的空格
+        STATE_INITIAL, // 符号位
+        STATE_INT_SIGN, // 整数部分
+        STATE_INTEGER, // 左侧有整数的小数点
+        STATE_POINT, // 左侧无整数的小数点（根据前面的第二条额外规则，需要对左侧有无整数的两种小数点做区分）
+        STATE_POINT_WITHOUT_INT, // 小数部分
+        STATE_FRACTION, // 字符 e
+        STATE_EXP, // 指数部分的符号位
+        STATE_EXP_SIGN, // 指数部分的整数部分
+        STATE_EXP_NUMBER, // 末尾的空格
         STATE_END
     }
 

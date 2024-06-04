@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//请实现一个函数，用来判断一棵二叉树是不是对称的。如果一棵二叉树和它的镜像一样，那么它是对称的。
+package com.example.demo.A_lc;
+//请实现一个函数，用来判断一棵二叉树是不是对称的。如果一棵二叉树和它的镜像一样，那么它是对称的。
 //
 // 例如，二叉树 [1,2,2,3,4,4,3] 是对称的。 
 //
@@ -40,9 +41,6 @@ package com.example.demo.A_lc;//请实现一个函数，用来判断一棵二叉
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
-import java.util.ArrayList;
-import java.util.Stack;
-
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -66,9 +64,11 @@ class Solution28 {
         if (n1 == null && n2 == null) {
             return true;
         }
+        // 不相等返回false
         if (n1 == null || n2 == null || n1.val != n2.val) {
             return false;
         }
+        // 相等继续判断子节点
         return isSame(n1.left, n2.right) && isSame(n1.right, n2.left);
     }
 }

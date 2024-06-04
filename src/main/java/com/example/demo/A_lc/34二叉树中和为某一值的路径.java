@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//给你二叉树的根节点 root 和一个整数目标和 targetSum ，找出所有 从根节点到叶子节点 路径总和等于给定目标和的路径。
+package com.example.demo.A_lc;
+//给你二叉树的根节点 root 和一个整数目标和 targetSum ，找出所有 从根节点到叶子节点 路径总和等于给定目标和的路径。
 //
 // 叶子节点 是指没有子节点的节点。 
 //
@@ -45,7 +46,6 @@ package com.example.demo.A_lc;//给你二叉树的根节点 root 和一个整数
 
 //leetcode submit region begin(Prohibit modification and deletion)
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 

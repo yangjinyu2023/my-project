@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//输入两个递增排序的链表，合并这两个链表并使新链表中的节点仍然是递增排序的。
+package com.example.demo.A_lc;
+//输入两个递增排序的链表，合并这两个链表并使新链表中的节点仍然是递增排序的。
 //
 // 示例1： 
 //
@@ -47,6 +48,32 @@ class Solution25 {
             current.next = l2;
             current = current.next;
             l2 = l2.next;
+        }
+        return head.next;
+    }
+
+    public ListNode mergeTwoLists111(ListNode l1, ListNode l2) {
+        ListNode head = new ListNode(0);// 创建一个空节点，很巧妙
+        ListNode node = head;
+        while (l1 != null && l2 != null){
+            if(l1.val <= l2.val){
+                node.next = l1;
+                l1 = l1.next;
+            }else{
+                node.next = l2;
+                l2 = l2.next;
+            }
+            node = node.next;
+        }
+        while (l1 != null){
+            node.next = l1;
+            l1 = l1.next;
+            node = node.next;
+        }
+        while (l2 != null){
+            node.next = l2;
+            l2 = l2.next;
+            node = node.next;
         }
         return head.next;
     }

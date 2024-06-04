@@ -49,12 +49,24 @@ class Solution24 {
         return current;
         */
         // 双指针
-        ListNode prev = null, currnet = head;
-        while(currnet != null){
-            ListNode nextNode = currnet.next;
-            currnet.next = prev;
-            prev = currnet;
-            currnet = nextNode;
+        ListNode prev = null, current = head;
+        while(current != null){
+            ListNode nextNode = current.next;
+            current.next = prev;
+            prev = current;
+            current = nextNode;
+        }
+        return prev;
+    }
+
+    public ListNode reverseList111(ListNode head) {
+        // 做了100遍了再不会可以去死了！
+        ListNode prev = null, current = head;
+        while(current != null){
+            ListNode next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
         }
         return prev;
     }

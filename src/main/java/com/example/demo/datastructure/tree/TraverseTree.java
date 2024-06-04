@@ -155,21 +155,23 @@ public class TraverseTree {
     }
 
     // 计算二叉树两个节点p、q的最近公共祖先（二叉树中无重复值）
+    // 从root向下找，返回的是最后一个left和right都不为空的节点，是最近的公共祖先节点
     public <E extends Comparable<? super E>> TreeNode<E> lowestCommonAncestor(TreeNode<E> root, TreeNode<E> node1, TreeNode<E> node2) {
         // 从root向下，如果一个节点，node1、node2分别在它的左右子树上，这个节点是公共祖先
         // 递归处理
-        // 递归结束条件，找到了node1或node2，或都没找到
+        // 递归结束条件，找到了node1或node2，或者到达叶子节点的末端
         if(root == null || root.value.compareTo(node1.value) == 0 || root.value.compareTo(node2.value) == 0){
             return root;
         }
         TreeNode<E> left = lowestCommonAncestor(root.left, node1, node2);
         TreeNode<E> right = lowestCommonAncestor(root.right, node1, node2);
+        // 如果p和q分别在当前节点的两侧，返回当前节点
         if(left != null && right != null){
             return root;
-        }else if(left != null){
-            return left;// 说明两个都在左子树，继续往下找
         }
-        else{
+        if(left != null){
+            return left;// 说明两个都在左子树，继续往下找
+        } else{
             return right;// 说明两个都在右子树，继续往下找
         }
     }
@@ -221,6 +223,7 @@ public class TraverseTree {
                 TreeNode<Integer> right = node.right;
                 node.right = node.left;
                 node.left = right;
+                // 注意这里还是让node为右节点
                 node = right;
             }
         }

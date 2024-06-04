@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//请完成一个函数，输入一个二叉树，该函数输出它的镜像。
+package com.example.demo.A_lc;
+//请完成一个函数，输入一个二叉树，该函数输出它的镜像。
 //
 // 例如输入： 
 //
@@ -34,8 +35,6 @@ package com.example.demo.A_lc;//请完成一个函数，输入一个二叉树，
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
-
-import java.util.Stack;
 
 /**
  * Definition for a binary tree node.

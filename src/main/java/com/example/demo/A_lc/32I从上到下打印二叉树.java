@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//从上到下打印出二叉树的每个节点，同一层的节点按照从左到右的顺序打印。
+package com.example.demo.A_lc;
+//从上到下打印出二叉树的每个节点，同一层的节点按照从左到右的顺序打印。
 //
 // 
 //
@@ -67,6 +68,23 @@ class Solution32 {
             result[i] = list.get(i).val;
         }
         return result;
+    }
+
+    public int[] levelOrder111(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<>();
+        List<Integer> list = new ArrayList<>();
+        queue.offer(root);
+        while(!queue.isEmpty()){
+            TreeNode node = queue.poll();
+            list.add(node.val);
+            if(node.left != null){
+                queue.offer(node.left);
+            }
+            if(node.right != null){
+                queue.offer(node.right);
+            }
+        }
+        return list.stream().mapToInt(Integer::intValue).toArray();
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//从上到下按层打印二叉树，同一层的节点按从左到右的顺序打印，每一层打印到一行。
+package com.example.demo.A_lc;
+//从上到下按层打印二叉树，同一层的节点按从左到右的顺序打印，每一层打印到一行。
 //
 // 
 //
@@ -47,7 +48,7 @@ import java.util.*;
  * TreeNode(int x) { val = x; }
  * }
  */
-class Solution33I {
+class Solution33II {
     public List<List<Integer>> levelOrder(TreeNode root) {
         // 广度优先遍历，每一层打印一行，最好是TreeNode中加个level属性
         // 但是不能改变提供的数据结构，这里设计了一个levelMap，还是麻烦了一些
@@ -108,6 +109,29 @@ class Solution33I {
                 }
                 if (node.right != null) {
                     queue.offer(node.right);
+                }
+            }
+            result.add(list);
+        }
+        return result;
+    }
+
+    public List<List<Integer>> levelOrder111(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()){
+            List<Integer> list = new ArrayList<>();
+            // queue.size在for循环内会变
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                list.add(node.val);
+                if(node.left != null){
+                    queue.add(node.left);
+                }
+                if(node.right != null){
+                    queue.add(node.right);
                 }
             }
             result.add(list);
