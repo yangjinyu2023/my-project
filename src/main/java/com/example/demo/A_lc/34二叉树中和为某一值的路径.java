@@ -45,6 +45,7 @@ package com.example.demo.A_lc;
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -65,15 +66,13 @@ import java.util.Stack;
  * }
  */
 class Solution34 {
-    List<List<Integer>> result;
-    Stack<Integer> stack;
+    List<List<Integer>> result = new ArrayList<>();
+    Stack<Integer> stack = new Stack<>();
     int target;
 
     public List<List<Integer>> pathSum(TreeNode root, int target) {
         // 深度优先遍历
         this.target = target;
-        this.result = new ArrayList<>();
-        this.stack = new Stack<>();
         /*
         Stack<TreeNode> stack = new Stack<>();
         TreeNode node = root;
@@ -111,5 +110,32 @@ class Solution34 {
         //}
         stack.pop();// 把访问过的节点pop掉
     }
+
+
+    public List<List<Integer>> pathSum111(TreeNode root, int target) {
+        // 以root为根，找路径，到叶子节点并且和为target
+        if (root == null) {
+            return null;
+        }
+        dfs111(root, 0, target, new Stack<>());
+        return result;
+    }
+
+    public void dfs111(TreeNode node, int currentSum, int target, Stack<Integer> stack) {
+        if (node == null) {
+            return;
+        }
+        stack.push(node.val);
+        currentSum += node.val;
+        if (currentSum == target && node.left == null && node.right == null) {
+            result.add(new ArrayList<>(stack));
+        }
+        dfs111(node.left, currentSum, target, stack);
+        dfs111(node.right, currentSum, target, stack);
+        // 走到这里说明左右节点被访问过了，路径一定包含该节点了，弹出该节点
+        stack.pop();
+    }
+
+
 }
 //leetcode submit region end(Prohibit modification and deletion)

@@ -1,6 +1,11 @@
 package com.example.demo.datastructure.tree;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Stack;
 
 /**
  * 二叉树的遍历 https://www.cnblogs.com/mq0036/p/14542765.html
@@ -160,18 +165,18 @@ public class TraverseTree {
         // 从root向下，如果一个节点，node1、node2分别在它的左右子树上，这个节点是公共祖先
         // 递归处理
         // 递归结束条件，找到了node1或node2，或者到达叶子节点的末端
-        if(root == null || root.value.compareTo(node1.value) == 0 || root.value.compareTo(node2.value) == 0){
+        if (root == null || root.value.compareTo(node1.value) == 0 || root.value.compareTo(node2.value) == 0) {
             return root;
         }
         TreeNode<E> left = lowestCommonAncestor(root.left, node1, node2);
         TreeNode<E> right = lowestCommonAncestor(root.right, node1, node2);
         // 如果p和q分别在当前节点的两侧，返回当前节点
-        if(left != null && right != null){
+        if (left != null && right != null) {
             return root;
         }
-        if(left != null){
+        if (left != null) {
             return left;// 说明两个都在左子树，继续往下找
-        } else{
+        } else {
             return right;// 说明两个都在右子树，继续往下找
         }
     }
@@ -336,5 +341,86 @@ public class TraverseTree {
         rllr.left = null;
         rllr.right = null;
         return root;
+    }
+
+    // 实现二叉树与其线性表表示之间的互相转换（假设二叉树各个节点的值不重复）
+    // 注意区分，不是完全二叉树的数组表示法
+    static class TreeAndListConversion {
+        //能够通过先序遍历结果恢复原来二叉树的，必须是一种在遍历过程中提供了足够信息以区分左子树和右子树的二叉树。典型的，有两种情况：
+        //
+        //带有空指针信息的任意二叉树：如果先序遍历在遍历过程中记录了空指针信息
+        // （例如，使用特殊符号如null或#来表示没有子节点），那么可以从先序遍历的结果中恢复原来的二叉树，
+        // 无论它是满的、完全的还是不完全的。这是因为空指针信息提供了足够的信息来区分何时一个节点的子节点结束，从而可以准确地恢复树的结构。
+        //
+        //特殊结构的二叉树：对于特定类型的二叉树，即使不记录空指针信息，也可以从先序遍历中恢复原树。
+        // 一个例子是满二叉树（Full Binary Tree），在这种树中，每个节点要么没有子节点，要么有两个子节点。
+        // 由于这种特殊的结构，我们可以仅通过节点的数量和遍历的顺序来确定树的结构。
+        public List<Integer> treeToList(TreeNode<Integer> root) {
+            if (root == null) {
+                return null;
+            }
+            List<Integer> list = new ArrayList<>();
+            serialize(root, list);
+            return list;
+        }
+
+        public void serialize(TreeNode<Integer> node, List<Integer> list) {
+            if (node == null) {
+                list.add(null);
+                return;
+            }
+            list.add(node.value);
+            serialize(node.left, list);
+            serialize(node.right, list);
+        }
+
+        // 将列表转换回二叉树（反序列化）
+        public TreeNode<Integer> listToTree(List<Integer> list) {
+            if (list == null || list.isEmpty()) {
+                return null;
+            }
+            return deserialize(new ArrayList<>(list)); // 创建列表的副本以避免修改原始列表
+        }
+
+        // 递归反序列化树
+        private TreeNode<Integer> deserialize(List<Integer> list) {
+            if (list.get(0) == null) {
+                list.remove(0); // 移除已处理的null元素
+                return null;
+            }
+            // 构建为TreeNode的需要移除掉，这个容易忘记
+            TreeNode<Integer> root = new TreeNode<>(list.remove(0)); // 移除并返回列表的第一个元素
+            root.left = deserialize(list);
+            root.right = deserialize(list);
+            return root;
+        }
+
+        //要理解并记住这个实现，我们可以将其分解为几个关键概念和步骤：
+        //
+        //### 关键概念
+        //
+        //1. **序列化（`treeToList`）**：这是将二叉树转换成线性表（列表）的过程。想象你正在将树的结构“平铺”成一行，以便可以在没有树形结构的情况下存储或传输。
+        //
+        //2. **反序列化（`listToTree`）**：这是将线性表（列表）转换回二叉树的过程。想象你正在根据一行中的指令重新构建树，恢复其原始结构。
+        //
+        //### 关键步骤
+        //
+        //1. **序列化步骤（先序遍历）**：
+        //   - **访问根节点**：将当前节点的值加入列表。
+        //   - **递归左子树**：然后对左子树执行相同操作。
+        //   - **递归右子树**：最后对右子树执行相同操作。
+        //   - **处理空节点**：遇到空节点时，添加一个特殊值（如`null`）到列表中以保留树的完整结构信息。
+        //
+        //2. **反序列化步骤**：
+        //   - **读取当前元素**：从列表中取出当前元素（并从列表中移除该元素）作为当前节点的值。
+        //   - **构建节点**：如果当前元素是特殊值（如`null`），则当前树节点为`null`；否则，创建一个新的树节点。
+        //   - **递归构建子树**：首先构建左子树，然后构建右子树。这一步骤递归地应用于列表中的剩余元素。
+        //
+        //### 记忆技巧
+        //
+        //- **序列化 = “平铺”树**：想象你在将树的每个节点按照先序遍历的顺序拿下来，然后按顺序排成一行，空位用`null`填充。
+        //- **反序列化 = “重建”树**：想象你拿到了一串珍珠（列表中的元素），按照先序遍历的顺序，一颗颗珍珠（节点）串起来重建树。遇到`null`珍珠就跳过，表示这里没有子节点。
+        //
+        //通过这样的方式，你可以将序列化想象为将树“拆解”成列表，而反序列化则是根据这个列表“组装”回原来的树。记住这个基本流程和关键步骤，可以帮助你更好地理解和记忆这个实现。
     }
 }

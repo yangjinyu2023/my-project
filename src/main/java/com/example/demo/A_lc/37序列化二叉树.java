@@ -26,6 +26,8 @@ package com.example.demo.A_lc;
 //leetcode submit region begin(Prohibit modification and deletion)
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -39,12 +41,56 @@ import java.util.Stack;
  * }
  */
 class Solution37 {
+    // 官方答案
+    // 我们可以先序遍历这颗二叉树，遇到空子树的时候序列化成 None，否则继续递归序列化。
+    // 那么我们如何反序列化呢？首先我们需要根据 , 把原先的序列分割开来得到先序遍历的元素列表，然后从左向右遍历这个序列：
+    //
+    //  如果当前的元素为 None，则当前为空树
+    //  否则先解析这棵树的左子树，再解析它的右子树
+    public class Codec {
+        public String serialize(TreeNode root) {
+            return rserialize(root, "");
+        }
+
+        public TreeNode deserialize(String data) {
+            String[] dataArray = data.split(",");
+            List<String> dataList = new LinkedList<String>(Arrays.asList(dataArray));
+            return rdeserialize(dataList);
+        }
+
+        public String rserialize(TreeNode root, String str) {
+            if (root == null) {
+                str += "None,";
+            } else {
+                str += str.valueOf(root.val) + ",";
+                str = rserialize(root.left, str);
+                str = rserialize(root.right, str);
+            }
+            return str;
+        }
+
+        public TreeNode rdeserialize(List<String> dataList) {
+            if (dataList.get(0).equals("None")) {
+                dataList.remove(0);
+                return null;
+            }
+
+            TreeNode root = new TreeNode(Integer.valueOf(dataList.get(0)));
+            dataList.remove(0);
+            root.left = rdeserialize(dataList);
+            root.right = rdeserialize(dataList);
+
+            return root;
+        }
+    }
 
     // Encodes a tree to a single string.
     // 考虑复杂了，
     // 不需要通过先序+中序来重建树，通过数组就能保存树的结构
     // 完全二叉树在数组中的位置（BFS）：根n，左子节点2n+1，右子节点2n+2
-    // 但是要构建完全二叉树，比较费劲
+
+    // 完全二叉树在数组中的位置关系（根节点索引为n，左子节点2n+1，右子节点2n+2）并不是基于先序遍历、中序遍历或后序遍历的概念。
+    // 这个关系是基于完全二叉树的性质和它在数组中的表示方法。
 
     // 替代方案，叶子节点必须是null，
     // 设m 为列表区间 [0,n] 中的 null 节点个数，
