@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//定义栈的数据结构，请在该类型中实现一个能够得到栈的最小元素的 min 函数在该栈中，调用 min、push 及 pop 的时间复杂度都是 O(1)。
+package com.example.demo.A_lc;
+//定义栈的数据结构，请在该类型中实现一个能够得到栈的最小元素的 min 函数在该栈中，调用 min、push 及 pop 的时间复杂度都是 O(1)。
 //
 // 
 //
@@ -34,6 +35,7 @@ import java.util.Stack;
 class MinStack {
 
     // 辅助栈法，很巧妙，背下来吧。。。
+    // 怎么保证先入后出的特性？所以有一个栈必须存放完整的元素，另外一个栈统计最小值
     private Stack<Integer> stackA;
 
     private Stack<Integer> stackB;

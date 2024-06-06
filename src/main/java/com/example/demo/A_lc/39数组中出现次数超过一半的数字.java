@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
+package com.example.demo.A_lc;
+//数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
 //
 // 
 //
@@ -24,8 +25,6 @@ package com.example.demo.A_lc;//数组中有一个数字出现的次数超过数
 // 
 // Related Topics 数组 哈希表 分治 计数 排序 👍 297 👎 0
 
-
-import java.util.HashMap;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution39 {
@@ -55,6 +54,12 @@ class Solution39 {
             votes += (num == major ? 1 : -1);
         }
         return major;
+    }
+
+    public static void main(String[] args) {
+        // 注意注意，题中说的是超过一半的元素，不是说取众数
+        // 取众数，这个算法不行，但是找超过一半的元素，这个算法ok
+        System.out.println(new Solution39().majorityElement(new int[]{4, 4, 2, 2, 2, 3, 1, 2}));
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

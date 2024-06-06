@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字。
+package com.example.demo.A_lc;
+//输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字。
 //
 // 
 //
@@ -131,6 +132,31 @@ class Solution29 {
 
         }
         return result;
+    }
+
+    public int[] spiralOrder111(int[][] matrix) {
+        int top = 0, bottom = matrix.length - 1, left = 0, right = matrix[0].length - 1;
+        int[] arr = new int[matrix.length * matrix[0].length];
+        int i = 0, j = 0, t = 0;
+        while (top != bottom || left != right) {
+            while (i <= right) {
+                arr[t++] = matrix[top][i++];
+            }
+            if (top++ == bottom) break;
+            while (j <= bottom) {
+                arr[t++] = matrix[j++][right];
+            }
+            if (right-- == left) break;
+            while (i >= left) {
+                arr[t++] = matrix[bottom][i--];
+            }
+            if (bottom-- == top) break;
+            while (j >= top) {
+                arr[t++] = matrix[j--][left];
+            }
+            if (left++ == right) break;
+        }
+        return arr;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
