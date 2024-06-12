@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//给定一个数字，我们按照如下规则把它翻译为字符串：0 翻译成 “a” ，1 翻译成 “b”，……，11 翻译成 “l”，……，25 翻译成 “z”。一个数字可
+package com.example.demo.A_lc;
+//给定一个数字，我们按照如下规则把它翻译为字符串：0 翻译成 “a” ，1 翻译成 “b”，……，11 翻译成 “l”，……，25 翻译成 “z”。一个数字可
 //能有多个翻译。请编程实现一个函数，用来计算一个数字有多少种不同的翻译方法。 
 //
 // 
@@ -18,6 +19,8 @@ package com.example.demo.A_lc;//给定一个数字，我们按照如下规则把
 // 
 // Related Topics 字符串 动态规划 👍 458 👎 0
 
+
+import java.sql.SQLOutput;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution46 {
@@ -51,6 +54,31 @@ class Solution46 {
         //     q=r;
         // }
         // return q;
+    }
+
+
+    public int translateNum111(int num) {
+        //输入: 12258
+        //输出: 5
+        //解释: 12258有5种不同的翻译，分别是"bccfi", "bwfi", "bczi", "mcfi"和"mzi"
+        //dp[i]代表前i个数字的翻译方式数量
+        //dp[i]=dp[i-1]+dp[i-2]
+        String numStr = String.valueOf(num);
+        int[] dp = new int[numStr.length() + 1];
+        dp[1] = 1;
+        int n = Integer.parseInt(numStr.substring(0, 2));
+        //n>=10这个条件别忘记
+        dp[2] = n >= 10 && n <= 25 ? 2 : 1;
+        for (int i = 3; i <= numStr.length(); i++) {
+            n = Integer.parseInt(numStr.substring(i - 2, i));
+            dp[i] = dp[i - 1] + (n >= 10 && n <= 25 ? dp[i - 2] : 0);
+        }
+        return dp[numStr.length()];
+        // 为什么要判断>=10，举个例子101，可以翻译bab，不能翻译成ab，因为01没有对应的翻译
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Solution46().translateNum111(12258));
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

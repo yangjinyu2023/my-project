@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//输入一个非负整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。
+package com.example.demo.A_lc;
+//输入一个非负整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。
 //
 // 
 //
@@ -30,12 +31,22 @@ package com.example.demo.A_lc;//输入一个非负整数数组，把数组里所
 
 
 import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution45 {
     public String minNumber(int[] nums) {
+        StringBuilder res = new StringBuilder();
+        String[] strs = new String[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            strs[i] = String.valueOf(nums[i]);
+        }
+        // 自定义排序，每个元素都按照规则进行排序
+        Arrays.sort(strs, (x, y) -> (x + y).compareTo(y + x));
+        for (String str : strs) {
+            res.append(str);
+        }
+        return res.toString();
+
         // 贪心算法（局部最优解）
         // 自顶向下，每一步上都要保证能获得局部最优解
         // 由此产生的全局解有时不一定是最优的，所以贪心算法不要回溯
@@ -44,16 +55,6 @@ class Solution45 {
         // 分析前两个元素x和y，如果"x"+"y"<"y"+"x"，那么x应该在y前
         // 分析前三个元素，将前两个元素看做一个整体，转换成分析两个元素
         // 最终按照排序结果，拼接字符串返回即可
-        StringBuilder res = new StringBuilder();
-        String[] strs = new String[nums.length];
-        for (int i = 0; i < nums.length; i++) {
-            strs[i] = String.valueOf(nums[i]);
-        }
-        Arrays.sort(strs, (x, y) -> (x + y).compareTo(y + x));
-        for (String str : strs) {
-            res.append(str);
-        }
-        return res.toString();
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

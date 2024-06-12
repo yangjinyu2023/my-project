@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//如何得到一个数据流中的中位数？如果从数据流中读出奇数个数值，那么中位数就是所有数值排序之后位于中间的数值。如果从数据流中读出偶数个数值，那么中位数就是所有数
+package com.example.demo.A_lc;
+//如何得到一个数据流中的中位数？如果从数据流中读出奇数个数值，那么中位数就是所有数值排序之后位于中间的数值。如果从数据流中读出偶数个数值，那么中位数就是所有数
 //值排序之后中间两个数的平均值。 
 //
 // 例如， 
@@ -42,8 +43,6 @@ package com.example.demo.A_lc;//如何得到一个数据流中的中位数？如
 // Related Topics 设计 双指针 数据流 排序 堆（优先队列） 👍 340 👎 0
 
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
 //leetcode submit region begin(Prohibit modification and deletion)

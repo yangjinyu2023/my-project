@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//输入一个整型数组，数组中的一个或连续多个整数组成一个子数组。求所有子数组的和的最大值。
+package com.example.demo.A_lc;
+//输入一个整型数组，数组中的一个或连续多个整数组成一个子数组。求所有子数组的和的最大值。
 //
 // 要求时间复杂度为O(n)。 
 //
@@ -24,8 +25,6 @@ package com.example.demo.A_lc;//输入一个整型数组，数组中的一个或
 // 
 // Related Topics 数组 分治 动态规划 👍 562 👎 0
 
-
-import java.util.PriorityQueue;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution42 {
@@ -81,6 +80,29 @@ class Solution42 {
             }
         }
         return dp[m-1][n-1];
+    }
+
+
+    public static void main(String[] args) {
+        // 输入: nums = [-2,1,-3,4,-1,2,1,-5,4]
+        //输出: 6
+        //解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。
+        int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
+        // dp[i] 代表以i为起点的最大和？
+        // 如果代表以i为重点的最大和，是不是可以从dp[0]向后了？是不是更容易理解一些？
+        int[] dp = new int[nums.length];
+        int max = dp[nums.length - 1] = nums[nums.length - 1];
+        for (int i = nums.length - 2; i >= 0 ; i--) {
+            // 错误写法！！
+            //dp[i] = nums[i] > 0 ? dp[i + 1] + nums[i] : dp[i+1];
+            //这个逻辑只在nums[i]大于0的情况下才将nums[i]加入到子数组和中，
+            // 忽略了负数也能贡献于后续子数组形成更大和的可能性。
+            // 实际上，即使是负数，也可能与后续的正数相加后得到更大的和，因此不应仅仅因为当前数是负数就直接跳过它。
+            //正确的状态转移方程应该是考虑当前元素是否能增加到子序列和中使和更大，即：
+            dp[i] = Math.max(nums[i], nums[i] + dp[i + 1]);
+            max = Math.max(dp[i], max);
+        }
+        System.out.println(max);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

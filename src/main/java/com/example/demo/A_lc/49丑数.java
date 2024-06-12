@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//我们把只包含质因子 2、3 和 5 的数称作丑数（Ugly Number）。求按从小到大的顺序的第 n 个丑数。
+package com.example.demo.A_lc;
+//我们把只包含质因子 2、3 和 5 的数称作丑数（Ugly Number）。求按从小到大的顺序的第 n 个丑数。
 //
 // 
 //
@@ -19,12 +20,11 @@ package com.example.demo.A_lc;//我们把只包含质因子 2、3 和 5 的数�
 // Related Topics 哈希表 数学 动态规划 堆（优先队列） 👍 363 👎 0
 
 
-import java.util.HashSet;
-
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution49 {
     public int nthUglyNumber(int n) {
         // solutions第二个
+        // 很好理解：2、3、5的倍数，所以用三个指针，分别指向2、3、5的倍数，然后取最小的，然后更新指针
         int[] dp = new int[n];
         dp[0] = 1;
         int p = 0, q = 0, r = 0;
