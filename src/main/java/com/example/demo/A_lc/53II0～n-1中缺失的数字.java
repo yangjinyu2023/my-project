@@ -42,5 +42,22 @@ class Solution53II {
         // 最终返回不相等的首个（左边界）
         return l;
     }
+
+
+    public int missingNumber111(int[] nums) {
+        //输入: [0,1,2,3,4,5,6,7,9] 输出: 8
+        //输入: [0,1,2,3,5,6,7,8,9] 输出: 8
+        int l = 0, r = nums.length - 1;
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+            if (m == nums[m]) {
+                l = m + 1;
+            } else {
+                r = m;//m有可能是要找的位置
+            }
+        }
+        return l;// 为什么返回的是l？考虑一下，当最后剩两个时，m=l
+        // 当m == nums[m]时l = m + 1否则l = m，所以最后返回l
+    }
 }
 //leetcode submit region end(Prohibit modification and deletion)

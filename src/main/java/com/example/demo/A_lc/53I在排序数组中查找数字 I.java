@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//统计一个数字在排序数组中出现的次数。
+package com.example.demo.A_lc;
+//统计一个数字在排序数组中出现的次数。
 //
 // 
 //
@@ -51,21 +52,29 @@ class Solution53I {
 
         // 使用循环
         // 优化，简化为寻找target和target-1的右边界，相减
+        // (target - 1) 一定存在吗？即便(target - 1)不存在，通过这种方式依然能正确处理边界情况，得到正确的统计结果。
+        // 这是因为我们在寻找右边界时实际上是在找大于等于target的元素的最左侧位置，
+        // 而寻找(target - 1)的右边界实质上是在定位所有小于target的元素的最右侧位置，
+        // 从而间接确定了target的起始和结束位置，计算出其出现次数
         return getR(nums, target) - getR(nums, target - 1);
     }
 
     public int getR(int[] nums, int target) {
         int l = 0, r = nums.length - 1;
+        int rightBound = -1; // 初始化右边界为-1，表示未找到目标值
         while (l <= r) {
             int m = l + (r - l) / 2;
-            if (nums[m] > target) {
+            if (nums[m] <= target) {
+                // 注意这里使用 `<=`，因为我们希望在等于的情况下也向右探索
+                l = m + 1;
+                if (nums[m] == target) {
+                    rightBound = m;// 更新右边界
+                }
+            } else {
                 r = m - 1;
             }
-            if (nums[m] <= target) {
-                l = m + 1;
-            }
         }
-        return r;
+        return rightBound;
     }
 
     public int getLeft(int[] nums, int target, int s, int e) {

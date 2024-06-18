@@ -1,4 +1,5 @@
-package com.example.demo.A_lc;//输入两个链表，找出它们的第一个公共节点。
+package com.example.demo.A_lc;
+//输入两个链表，找出它们的第一个公共节点。
 //
 // 如下面的两个链表： 
 //
@@ -50,7 +51,7 @@ package com.example.demo.A_lc;//输入两个链表，找出它们的第一个公
 // 注意： 
 //
 // 
-// 如果两个链表没有交点，返回 null. 
+    // 如果两个链表没有交点，返回 null.
 // 在返回结果后，两个链表仍须保持原有的结构。 
 // 可假定整个链表结构中没有循环。 
 // 程序尽量满足 O(n) 时间复杂度，且仅用 O(1) 内存。 
@@ -126,6 +127,15 @@ class Solution52 {
         }
         return null;
         */
+    }
+
+    public ListNode getIntersectionNode111(ListNode headA, ListNode headB) {
+        ListNode node1 = headA, node2 = headB;
+        while(node1 != node2){
+            node1 = node1 == null ? headB : node1.next;
+            node2 = node2 == null ? headA : node2.next;
+        }
+        return node1;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

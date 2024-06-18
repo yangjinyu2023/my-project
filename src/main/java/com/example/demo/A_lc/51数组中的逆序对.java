@@ -1,4 +1,6 @@
-package com.example.demo.A_lc;//在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。
+package com.example.demo.A_lc;
+//在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。
+//输入一个数组，求出这个数组中的逆序对的总数。
 //
 // 
 //
@@ -63,12 +65,18 @@ class Solution51 {
     // 7,5  6   4,8  1
     // 7  5  6  4  8  1
     // 开始合并：
+    // 7 5 6   4 8 1
+    // A B C D E F G H  A中有几个比B大的，E中有几个比F大的 =>1
     // 5,7  6   4,8  1
-    // A   B    C   D  在原数组中的顺序，A->B  C->D
+    //  A   B    C   D  A中有几个比B大的，C中有几个比D大的 =>3   (在原数组中的顺序，A->B  C->D)
+    // 5,6,7  1,4,8
+    //   A      B       A中有几个比B大的 => 6
+    // 最终结果 10
+
     // 因此判断A中有几个比B大的，C中有几个比D大的，就能统计逆序对数量
     // 左子数组索引i，右子数组索引j，如果nums[i] > nums[j]，
     // 那么说明i到mid+1区间内的都比nums[j]大（因为子数组有序）
-    // 所以 count += mid + 1 - 1
+    // 所以 count += mid + 1 - i
     public void merge(int[] nums, int start, int mid, int end, int[] tmp) {
         int i = start, j = mid + 1, t = 0;
         while (i <= mid && j <= end) {

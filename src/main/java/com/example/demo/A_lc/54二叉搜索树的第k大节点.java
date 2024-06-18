@@ -1,4 +1,5 @@
-package com.example.demo.A_lc; /**
+package com.example.demo.A_lc;
+/**
  * 给定一棵二叉搜索树，请找出其中第 k 大的节点的值。
  * <p>
  * <p>
@@ -11,19 +12,19 @@ package com.example.demo.A_lc; /**
  * / \
  * 1   4
  * \
- *    2
+ *  2
  * 输出: 4
  * <p>
  * 示例 2:
  * <p>
  * <p>
  * 输入: root = [5,3,6,2,4,null,null,1], k = 3
- * 5
- * / \
- * 3   6
- * / \
- * 2   4
- * /
+ *       5
+ *      / \
+ *     3   6
+ *    / \
+ *   2  4
+ *  /
  * 1
  * 输出: 4
  * <p>
